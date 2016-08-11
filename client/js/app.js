@@ -1,28 +1,4 @@
-var app = angular.module('flapper', ['ui.router', 'ngMaterial']);
-
-app.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-    .state('home', {
-        url: '/home',
-        templateUrl: '/views/home.html'
-        // views: {
-        //     "view": {"template": "home.html"}
-        // }
-        // controller: 'mainCtrl'
-    })
-    .state('about', {
-        url: '/about',
-        templateUrl: '/views/about.html'
-    })
-    .state('upload', {
-        url: '/upload',
-        templateUrl: '/views/uploadForm.html',
-        controller: 'mainCtrl'
-    });
-    
-    $urlRouterProvider.otherwise('home');
-});
-
+var app = angular.module('BlogApp', ['ui.router', 'ngMaterial', 'ngSanitize']);
 
 app.directive('fileModel', ['$parse', function ($parse) {
     return {
