@@ -22,11 +22,11 @@
     <script type="text/javascript" src="../js/controllers/main-ctrl.js"></script>
     <script type="text/javascript" src="../js/controllers/routes.js"></script>
     <script type="text/javascript" src="../js/controllers/blogDetail.js"></script>
-    
-    <link rel="stylesheet" href="../lib/angular-timeline/angular-timeline.css"/>
+
+    <link rel="stylesheet" href="../lib/angular-timeline/angular-timeline.css" />
     <script type="text/javascript" src="../lib/angular-timeline/angular-timeline.js"></script>
     <style>
-        .background1 {
+        .background {
             background: url(/images/white_background_dents_bumps_texture_69592_1920x1080.jpg) no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
@@ -73,27 +73,29 @@
 </head>
 
 <body ng-app="BlogApp">
-    <div class="container">
-        <div layout="row" class="header">
-            <div class="title">
-                Vishal Kalaskar
+    <div class="background">
+        <div class="container">
+            <div layout="row" class="header">
+                <div class="title">
+                    Vishal Kalaskar
+                </div>
+                <div flex>
+                    <md-tabs>
+                        <!--<md-tab label="Home" md-active="true" ui-sref=".home"></md-tab>-->
+                        <md-tab label="Home" md-active="true" ui-sref="root.home"></md-tab>
+                        <md-tab label="About" ui-sref="root.about"></md-tab>
+                        <md-tab label="Blogs" ui-sref="root.blogs"></md-tab>
+                    </md-tabs>
+                </div>
+                <div flex>
+                    <span>Ph. &nbsp &nbsp &nbsp: </span> +91-9686289687
+                    <br/>
+                    <span>e-mail :</span> kalaskarvishald@gmail.com
+                </div>
             </div>
-            <div flex>
-                <md-tabs>
-                    <!--<md-tab label="Home" md-active="true" ui-sref=".home"></md-tab>-->
-                    <md-tab label="Home" md-active="true" ui-sref="root.home"></md-tab>
-                    <md-tab label="About" ui-sref="root.about"></md-tab>
-                    <md-tab label="Blogs" ui-sref="root.blogs"></md-tab>
-                </md-tabs>
+            <div>
+                <div ui-view="main"></div>
             </div>
-            <div flex>
-                <span>Ph. &nbsp &nbsp &nbsp: </span> +91-9686289687
-                <br/>
-                <span>e-mail :</span> kalaskarvishald@gmail.com
-            </div>
-        </div>
-        <div>
-            <div ui-view="main"></div>
         </div>
     </div>
 </body>
