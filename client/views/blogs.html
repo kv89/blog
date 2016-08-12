@@ -1,1 +1,12 @@
-<p ng-bind-html="trustAsHtml( posts[0].contents );"></p>
+<!--<p ng-bind-html="trustAsHtml( posts[0].contents );"></p>-->
+
+<!--<div style="overflow: scroll; height: 100px; max-height: 110px;">-->
+    <div>
+    <div ng-repeat="post in posts">
+        <div>
+            <h4><a class="link" ui-sref=".detail({title: post.title, post: post})"> {{ post.title.toUpperCase() }}</a></h4>
+            <br/>
+            <img class="thumbnail" ng-src="{{ post.image || '/images/no-image.jpg'}}" ui-sref=".detail({title: post.title, post: post})"/>
+        </div>
+    </div>
+</div>

@@ -4,7 +4,7 @@ app.controller('AppCtrl', ['$scope', '$http', 'fileUpload', '$sce', function ($s
         {
             title: "Deaths from diabetes will rise: ISCR",
             links: [
-                "http://www.ptinews.com/news/7304890_Deaths-from-diabetes-will-rise--ISCR.html 06 April 2016"
+                "http://www.ptinews.com/news/7304890_Deaths-from-diabetes-will-rise--ISCR.html"
             ],
             image: '/images/diabetes.jpg',
             contents: `<p><span style="font-size: medium;"><em><strong>W</strong></em>ith an increase in life expectancy, obesity and sedentary lifestyles, the prevalence of diabetes will rise dramatically and also the number of resulting deaths, a research body today warned and stressed for greater investments in research to find its "<em><strong>affordable</strong></em>" treatment.</span></p>
@@ -20,10 +20,26 @@ app.controller('AppCtrl', ['$scope', '$http', 'fileUpload', '$sce', function ($s
 <p><span style="font-size: medium;"><em><strong>W</strong></em>ith an increase in life expectancy, obesity and sedentary lifestyles, the prevalence of diabetes will rise dramatically and so will the corresponding number of deaths from diabetes, the body said.</span></p>
 <p><span style="font-size: medium;">&nbsp;</span></p>
 <p><span style="font-size: medium;"><em><strong>ISCR</strong></em> said that it is optimistic that the recent changes by the regulatory authorities in India to create a balanced and scientific environment for the conduct of clinical research in the country will see sponsors increase investments in endemic illnesses in the region like diabetes.</span></p>`
+        },
+        {
+            title: "Deaths from diabetes will rise: ISCR"
+        },
+        {
+            title: "Deaths from diabetes will rise: ISCR"
+        },
+        {
+            title: "Deaths from diabetes will rise: ISCR"
+        },
+        {
+            title: "Deaths from diabetes will rise: ISCR"
         }
     ];
 
-
+    $scope.getImageSrc = function( srcLink ){
+        console.log('image: ', srcLink);
+        return srcLink || '/images/sample.jpg';
+    };
+    
     $scope.trustAsHtml = function ( data ) {
         return $sce.trustAsHtml( data );
     };

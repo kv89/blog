@@ -26,6 +26,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             views: {
                 "body": { templateUrl: '/views/blogs.html' }
             }
+        })
+        .state('root.blogs.detail', {
+            url: '/detail/:title',
+            params: {
+                post: null
+            },
+            views: {
+                "body@root": { templateUrl: '/views/blogDetail.html' },
+            },
+            controller: 'BlogDetailCtrl'
         });
     // .state('upload', {
     //     url: '/upload',
