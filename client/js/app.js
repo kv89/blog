@@ -1,4 +1,4 @@
-var app = angular.module('BlogApp', ['ui.router', 'ngMaterial', 'ngSanitize']);
+var app = angular.module('BlogApp', ['ui.router', 'ngMaterial', 'ngSanitize', 'angular-timeline']);
 
 app.directive('fileModel', ['$parse', function ($parse) {
     return {

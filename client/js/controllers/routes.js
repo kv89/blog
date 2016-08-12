@@ -3,7 +3,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('root', {
             url: '',
             views: {
-                "master": { "templateUrl": "/views/header.html" }
+                "main": { "templateUrl": "/views/header.html" }
                 // 'footer':{templateUrl: 'footer.html'}
             },
             controller: 'AppCtrl'
@@ -11,7 +11,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         .state('root.home', {
             url: '/home',
             views: {
-                "body": { "templateUrl": "/views/main.html" }
+                "body": { "templateUrl": "/views/home.html" },
+                "skillsView@root.home": { "templateUrl": "/views/skills.html" },
+                "experience@root.home": { "templateUrl": "/views/experience.html" },
+                "education@root.home": { "templateUrl": "/views/experience.html" }
+                
             }
             // controller: 'mainCtrl'
         })

@@ -35,13 +35,13 @@ app.controller('AppCtrl', ['$scope', '$http', 'fileUpload', '$sce', function ($s
         }
     ];
 
-    $scope.getImageSrc = function( srcLink ){
+    $scope.getImageSrc = function (srcLink) {
         console.log('image: ', srcLink);
         return srcLink || '/images/sample.jpg';
     };
-    
-    $scope.trustAsHtml = function ( data ) {
-        return $sce.trustAsHtml( data );
+
+    $scope.trustAsHtml = function (data) {
+        return $sce.trustAsHtml(data);
     };
     // $scope.addPost = function () {
     //     if (!$scope.title || $scope.title === '') { return; }
@@ -64,18 +64,71 @@ app.controller('AppCtrl', ['$scope', '$http', 'fileUpload', '$sce', function ($s
     //     post.upvotes += 1;
     // }
     
-    function loadFiles() {
+    $scope.careers = [{
+        id: 1,
+        badgeClass: 'info',
+        badgeIconClass: 'glyphicon-road',
+        title: 'T/DG - The Digital Group Infotech, PUNE',
+        content: 'Senior Software Engineer',
+        period: 'May 2016 - till date !',
+    }, {
+            badgeClass: 'info',
+            badgeIconClass: 'glyphicon-road',
+            title: 'Medibox Technologis LLP, BANGALORE',
+            content: 'Senior Software Engineer',
+            period: 'May 2015 - May 2015'
+        },
+        {
+            badgeClass: 'info',
+            badgeIconClass: 'glyphicon-road',
+            title: 'Razorsight Software Pvt. Ltd',
+            content: 'Software Engineer',
+            period: 'April 2014 – May 2015'
+        },
+        {
+            badgeClass: 'info',
+            badgeIconClass: 'glyphicon-road',
+            title: ' Subex Limited',
+            content: 'System Analyst',
+            period: 'July 2011 – March 14'
+        }];
 
-    }
+    $scope.education = [{
+        badgeClass: 'info',
+        badgeIconClass: 'glyphicon-road',
+        title: 'T/DG - The Digital Group Infotech, PUNE',
+        content: 'Senior Software Engineer',
+        period: 'May 2016 - till date !',
+    }, {
+            badgeClass: 'info',
+            badgeIconClass: 'glyphicon-road',
+            title: 'Medibox Technologis LLP, BANGALORE',
+            content: 'Senior Software Engineer',
+            period: 'May 2015 - May 2015'
+        },
+        {
+            badgeClass: 'info',
+            badgeIconClass: 'glyphicon-road',
+            title: 'Razorsight Software Pvt. Ltd, BANGALORE',
+            content: 'Software Engineer',
+            period: 'April 2014 – May 2015'
+        },
+        {
+            badgeClass: 'info',
+            badgeIconClass: 'glyphicon-road',
+            title: ' Subex Limited, BANGALORE',
+            content: 'System Analyst',
+            period: 'July 2011 – March 14'
+        }];
 
-    $scope.upload = function (filee) {
-        var file = $scope.myFile;
-        console.log('file is ');
-        console.dir(file);
-        // var uploadUrl = "http://10.100.129.79:3000/api/upload";
-        var uploadUrl = "http://localhost:3000/api/upload";
-        fileUpload.uploadFileToUrl(file, uploadUrl);
+    // $scope.upload = function (filee) {
+    //     var file = $scope.myFile;
+    //     console.log('file is ');
+    //     console.dir(file);
+    //     // var uploadUrl = "http://10.100.129.79:3000/api/upload";
+    //     var uploadUrl = "http://localhost:3000/api/upload";
+    //     fileUpload.uploadFileToUrl(file, uploadUrl);
 
-    };
+    // };
 
 }]);

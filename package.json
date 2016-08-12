@@ -2,6 +2,7 @@
   "name": "blog",
   "version": "0.0.1",
   "dependencies": {
+    "angular-timeline": "^1.7.0",
     "body-parser": "^1.15.2",
     "express": "latest",
     "multer": "^1.2.0",

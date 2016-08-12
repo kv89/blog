@@ -1,0 +1,15 @@
+<timeline flex="100">
+    <timeline-event ng-repeat="event in education" style="text-align: center" ;>
+        <timeline-badge class="{{event.badgeClass}}">
+            <span class="glyphicon {{event.badgeIconClass}}"></span>
+        </timeline-badge>
+        <timeline-panel class="{{event.badgeClass}}">
+            <timeline-heading>
+                <h3><b>{{event.title}}</b></h3>
+                <h5>{{event.period}}</h5>
+            </timeline-heading>
+            <p>
+                <h3>"{{event.content}}"</h3></p>
+        </timeline-panel>
+    </timeline-event>
+</timeline>

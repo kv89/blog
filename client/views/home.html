@@ -1,10 +1,44 @@
-<div class="col-md-12">
-    <div ng-repeat="post in posts">
-        <div class="col-md-4" style="padding-top: 2%;">
-            <h3><a class="link" href="#""> {{ post.title.toUpperCase() }}</a></h3>
-            <!--<a href="#">{{ post.link }}</a>-->
-            <br/>
-            <img class="image" ng-src="/images/sample.jpg" />
+<div layout="row">
+    <img flex="25" class="thumbnail" ng-src="{{ post.image || '/images/me1.jpg'}}" style="padding: 0;" />
+    <div flex="75" style="margin-left: 2%;">
+        <div>Software Engineer</div>
+        <hr style="color: black">
+        <div style="font-size: smaller;">
+            <ul>
+                <li>
+                    <p>
+                        Professional experience of 5+ years in product development with different roles and responsibilities persued !
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Javascript enthusiast, with a keen interest in the different JS frameworks available !
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Likes exploring different technologies !
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Also, passionate about technical mentoring & dialogues !
+                    </p>
+                </li>
+            </ul>
         </div>
     </div>
+</div>
+<div layout="column">
+    <hr flex="100" style="color: black; width: 100%; margin: 1% 1% 1% 0%;;">
+        <h2 style="padding: 3%;">Proficiency :</h2>
+        <div ui-view="skillsView"></div>
+    <hr flex="100" style="color: black; width: 100%; margin: 1% 1% 1% 0%;;">
+        <h2 style="padding: 3%;">Journey so far :</h2>
+        <div ui-view="experience"></div>
+    <hr flex="100" style="color: black; width: 100%; margin: 1% 1% 1% 0%;;">
+    <h2 style="padding: 3%;">Qualification :</h2>
+        <div ui-view="education"></div>
+    <hr flex="100" style="color: black; width: 100%; margin: 1% 1% 1% 0%;;">
+    
 </div>
