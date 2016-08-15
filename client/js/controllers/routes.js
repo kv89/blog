@@ -14,7 +14,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 "body": { "templateUrl": "/views/home.html" },
                 "skillsView@root.home": { "templateUrl": "/views/skills.html" },
                 "experience@root.home": { "templateUrl": "/views/experience.html" },
-                "education@root.home": { "templateUrl": "/views/experience.html" }
+                "education@root.home": { "templateUrl": "/views/education.html" }
                 
             }
             // controller: 'mainCtrl'

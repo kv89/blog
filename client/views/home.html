@@ -1,8 +1,10 @@
 <div layout="row">
     <img flex="25" class="thumbnail" ng-src="{{ post.image || '/images/me1.jpg'}}" style="padding: 0;" />
     <div flex="75" style="margin-left: 2%;">
-        <div>Software Engineer</div>
-        <hr style="color: black">
+        <!-- <div>Software Engineer</div> -->
+        <h2 class="double"> Software Engineer </h2>
+        <!-- <span class="doubleUnderline">  Software Engineer  </span> -->
+        <!-- <hr style="color: black"> -->
         <div style="font-size: smaller;">
             <ul>
                 <li>
@@ -29,16 +31,20 @@
         </div>
     </div>
 </div>
+<hr style="color: black">
 <div layout="column">
-    <hr flex="100" style="color: black; width: 100%; margin: 1% 1% 1% 0%;;">
-        <h2 style="padding: 3%;">Proficiency :</h2>
+    <!-- <hr flex="100" style="color: black; width: 100%; margin: 1% 1% 1% 0%;;"> -->
+        <!-- <h2 style="padding: 0% 0% 0% 3%;">Proficiency :</h2> -->
+        <h2 class="double">Proficiency :</h2>
+        <!-- <span class="doubleUnderline">  Software Engineer  </span> -->
         <div ui-view="skillsView"></div>
     <hr flex="100" style="color: black; width: 100%; margin: 1% 1% 1% 0%;;">
-        <h2 style="padding: 3%;">Journey so far :</h2>
+        <!-- <h2 style="padding: 0% 0% 0% 3%;">Journey so far :</h2> -->
+        <h2 class="double">Journey so far :</h2>
         <div ui-view="experience"></div>
     <hr flex="100" style="color: black; width: 100%; margin: 1% 1% 1% 0%;;">
-    <h2 style="padding: 3%;">Qualification :</h2>
+    <h2 class="double">Qualification :</h2>
         <div ui-view="education"></div>
-    <hr flex="100" style="color: black; width: 100%; margin: 1% 1% 1% 0%;;">
+    <!-- <hr flex="100" style="color: black; width: 100%; margin: 1% 1% 1% 0%;;"> -->
     
 </div>

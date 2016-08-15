@@ -96,29 +96,15 @@ app.controller('AppCtrl', ['$scope', '$http', 'fileUpload', '$sce', function ($s
     $scope.education = [{
         badgeClass: 'info',
         badgeIconClass: 'glyphicon-road',
-        title: 'T/DG - The Digital Group Infotech, PUNE',
-        content: 'Senior Software Engineer',
-        period: 'May 2016 - till date !',
+        title: 'Bachelor of Engineering. ( B.E. - yr. 2011 )',
+        content: 'Rajarshi Shahu College of Engg., Pune',
+        period: 'Completed in 2011',
     }, {
             badgeClass: 'info',
             badgeIconClass: 'glyphicon-road',
-            title: 'Medibox Technologis LLP, BANGALORE',
-            content: 'Senior Software Engineer',
-            period: 'May 2015 - May 2015'
-        },
-        {
-            badgeClass: 'info',
-            badgeIconClass: 'glyphicon-road',
-            title: 'Razorsight Software Pvt. Ltd, BANGALORE',
-            content: 'Software Engineer',
-            period: 'April 2014 – May 2015'
-        },
-        {
-            badgeClass: 'info',
-            badgeIconClass: 'glyphicon-road',
-            title: ' Subex Limited, BANGALORE',
-            content: 'System Analyst',
-            period: 'July 2011 – March 14'
+            title: 'Higher Secondary Education. ( 12th - yr. 2007 )',
+            content: 'Fergusson College, Pune.',
+            period: 'Completede in 2007'
         }];
 
     // $scope.upload = function (filee) {
