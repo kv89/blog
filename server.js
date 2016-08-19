@@ -5,7 +5,7 @@ var app = express();
 var router = express.Router();
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/client/views/index.html');
+    res.sendFile(__dirname + '/client/views1/index.html');
 });
 
 app.use(express.static(__dirname + '/client'));
