@@ -14,3 +14,6 @@ https://scotch.io/tutorials/3-simple-tips-for-using-ui-router
 
 // resumes 
 1. http://www.wix.com/website-template/view/html/1588?originUrl=http%3A%2F%2Fwww.wix.com%2Fwebsite%2Ftemplates%2Fhtml%2Fportfolio-cv%2F1&bookName=create-master-new&galleryDocIndex=1&category=portfolio-cv&metaSiteId=
+
+// npm modules
+1. https://www.npmjs.com/package/dotenv
