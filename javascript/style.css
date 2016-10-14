@@ -1,0 +1,16 @@
+.left-column, .right-column{
+  float:left;
+}
+
+.left-column{
+  width:30%; 
+}
+
+.right-column{
+  width:60%; 
+}
+
+div{
+  padding:10px;
+  border:solid 1px black;
+}

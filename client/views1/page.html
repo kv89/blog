@@ -1,4 +1,4 @@
-<div style="height: 4000px;">
+<div>
     <div style="position: relative;">
         <img style="margin-left: 15%;" ng-src="{{ post.image || '/images/me1.jpg'}}" style="padding: 0;" />
         <div style="position: fixed;top: 204px;left: 10%;background-color: white; margin: 75px 0px 0px 60px;" class="padded" md-whiteframe="{{ctrl.elevation}}"
@@ -8,17 +8,18 @@
             <md-list-item class="md-3-line" style="width: 250px;" layout-align="center center" layout="column">
                 <div class="md-list-item-text" >
                     <!--<h3 flex="100">Home</h3>-->
-                    <md-button md-no-ink="" class="md-primary">Home</md-button>
+                    <md-button ui-sref="root" class="md-primary">Home</md-button>
                 </div>
                 <div class="md-list-item-text" >
-                    <md-button md-no-ink="" class="md-primary">About</md-button>
+                    <md-button ui-sref="root.about" class="md-primary">About</md-button>
                 </div>
                 <div class="md-list-item-text" >
                     <md-button md-no-ink="" class="md-primary">Links</md-button>
                 </div>
             </md-list-item>
-
-
+        </div>
+        <div class="content">
+            <div ui-view="page"></div>
         </div>
     </div>
 </div>

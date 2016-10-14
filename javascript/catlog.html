@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Mobile Catalog </title>
+		<script src="js.js"></script>
+	</head>
+	<body>
+	<header> <h1>Your Mobile Gallary !</h1> </header>
+	<div class="left-column">
+	  <div>Left Side Row 1</div>
+	  <div>Left Side Row 2</div>
+	  <div>Left Side Row 3</div>
+	</div>
+	<div class="right-column">
+	  	<div>
+	  		<h3>Search your handset here !</h3>
+	  		<div>
+				<input type="text" style="width: 100%;"/>
+			</div>
+	  	</div>
+	  	<div class="grid" id="displayView">
+	  		<table id="displayTable">
+	  			<thead class="column-header">
+	  				<tr>
+		  				<td>Name</td>
+		  				<td>Company</td>
+		  				<td>Release Date</td>
+		  				<td>Ratings</td>
+	  				</tr>
+	  			</thead>
+	  			<tbody>
+	  				<tr class="row"></tr>		
+	  			</tbody>
+	  			
+	  		</table>
+	  		<button type="button" style="cursor: pointer;" onclick="addPhone();">New Phone</button>
+	  	</div>
+	  	<div id="inputView" style="display: none;" onsubmit="submitPhone();">
+		  	<form id="inputForm" name="input" action="#" method="post">
+	    	    First name: <input type="text" name="firstname" value="first name"><br/>
+	    	    Last name: <input type="text" name="lastname" value="last name"><br/>
+	    	    E-mail: <input type="email" name="email" value="e-mail address"><br/><br/>
+	        </form>
+	        <button type="button" style="cursor: pointer;" onclick="saveForm();">Save</button>
+        </div>
+	</div>
+
+	<!-- <div id="inputForm"> -->
+	<!-- </div> -->
+
+	</body>
+
+
+	<style type="text/css">
+		header, footer {
+			padding: 1em;
+		    color: white;
+		    background-color: black;
+		    clear: left;
+		    text-align: center;
+		}
+
+		.left-column, .right-column{
+		  float:left;
+		  /*display: inl;*/
+		}
+
+		.left-column{
+		  width:10%; 
+		  border-right:solid 1px black;
+		}
+
+		.right-column{
+		  width: 86%; 
+		  border:solid 1px black;
+		}
+
+		div {
+		  padding:10px;
+		}
+		
+		table {
+			table-layout: auto;
+		}
+		table thead {
+		    display: table-row-group;
+		    vertical-align: middle;
+		    border-color: inherit;
+		    font-weight: bold;
+		    text-align: center;
+		    /*font-style: italic;*/
+		}
+
+		table thead,tbody tr {
+			padding: 2%;
+		}
+
+		table thead,tbody tr td, th {
+			width: 32%;
+		}
+
+		table tbody {
+		    display: table-row-group;
+		    vertical-align: middle;
+		    border-color: inherit;
+		    font-style: italic;
+		    text-align: center;
+		}
+	</style>
+</html>

@@ -1,4 +1,4 @@
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($controllerProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
         .state('root', {
             url: '',
@@ -7,4 +7,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             },
             controller: 'AppCtrl'
         })
+        .state("root.about", {
+        	url: '/about',
+        	views: {
+        		"page": {"templateUrl": "/views1/about.html"}
+        	}
+        });
 });

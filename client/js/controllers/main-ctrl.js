@@ -1,4 +1,4 @@
-app.controller('AppCtrl', ['$scope', '$http', 'fileUpload', '$sce', function ($scope, $http, fileUpload, $sce) {
+app.controller('AppCtrl', ['$scope', '$http', 'fileUpload', '$sce', '$state', function ($scope, $http, fileUpload, $sce, $state) {
     console.log('loading - AppCtrl');
     $scope.posts = [
         {
@@ -116,5 +116,5 @@ app.controller('AppCtrl', ['$scope', '$http', 'fileUpload', '$sce', function ($s
     //     fileUpload.uploadFileToUrl(file, uploadUrl);
 
     // };
-
+    $state.go('home');
 }]);
