@@ -15,10 +15,10 @@
 	  	<div>
 	  		<h3>Search your handset here !</h3>
 	  		<div>
-				<input type="text" style="width: 100%;"/>
+				<input id="searchInp" type="text" style="width: 30%;" onkeyup="onsearchEnter()"/>
 			</div>
 	  	</div>
-	  	<div class="grid" id="displayView" style="display: none;">
+	  	<div class="grid" id="displayView" style="">
 	  		<table id="displayTable">
 	  			<thead class="column-header">
 	  				<tr>
@@ -36,7 +36,7 @@
 	  		<button type="button" style="cursor: pointer;" onclick="addPhone();">New Phone</button>
 	  	</div>
 	  	<!--<div id="inputView" style="display: none;" onsubmit="submitPhone();">-->
-              <!--<div id="inputView" onsubmit="submitPhone();">-->
+        <div id="inputView" style="display: none;">
 		  	<form id="inputForm" name="input" action="#" method="post">
 	    	    <span style="color: red">*</span> Mobile Name: <input type="text" name="mName" placeholder="first name"><br/>
 	    	    <span style="color: red">*</span> Company:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <input type="text" name="mCompany" placeholder="last name"><br/>
@@ -44,7 +44,7 @@
 	        </form>
             <span id="errMsg" style="display: none;color: red; font-weight: bold; folt-style: italic"></span></br>
 	        <button type="submit" style="cursor: pointer;" onclick="saveForm();">Save</button>
-        <!--</div>-->
+        </div>
 	</div>
 
 	<!-- <div id="inputForm"> -->

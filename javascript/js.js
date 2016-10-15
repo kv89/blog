@@ -1,6 +1,6 @@
 'use strict';
 
-console.log("-- : ", window.localStorage, typeof(Storage));
+// console.log("-- : ", window.localStorage, typeof(Storage));
 function init() {
 	var handsets = [
 		{name: "OnePlus 1", company: "OP-OnePlus", releaseDate: "Mar 2016"},
@@ -21,7 +21,7 @@ function init() {
 	// }
 }
 init();
-console.log("-- : ", window.localStorage);
+// console.log("-- : ", window.localStorage);
 
 function addPhone(){
 	console.log('new phone.');
@@ -63,36 +63,75 @@ function validateNewData( newData ) {
     return true;
 }
 
-// function submitPhone(){
-// 	//TODO: from here
-// }
+var onsearchEnter = function(){
+    var searchElem = document.getElementById("searchInp");
+    var searchFor = '';
+    if( searchElem ){
+        searchFor =  searchElem.value.trim();
+        if( !searchFor || searchFor == '' ) {
+            return ;
+        }
+    } else {
+        return ;        
+    }
+    console.log('search for : ', searchFor);
+	
+    var filterData = searchForString( searchFor );
+    // console.log('Result : ',  filterData );
+    
+    insertRowsToTable(filterData, "displayTable");
+    
+    
+}
 
-document.addEventListener("DOMContentLoaded", function(event) { 
-  //do work
-  console.log( ' -- > ', document.readyState );// interactive
-  console.log( "dsp table : ", document.getElementById("displayTable") );
-  var table = document.getElementById("displayTable");
-  var data = JSON.parse(window.localStorage.getItem("allHandsets"));
-  	console.log('---.--- ; ', data);
-  insertRowToTable(JSON.parse(window.localStorage.getItem("allHandsets")), "displayTable");
+function searchForString(searchFor) {// TODO: bug on 2nd time search
+    var results = [];
+    var data = JSON.parse(window.localStorage.getItem("allHandsets"));
+    console.log('data : ', data);
+    for (var i = 0; i < data.length; i++) {
+        // debugger;
+        for (var key in data[i]) {
+            if (data[i][key].indexOf(searchFor) != -1) {
+                results.push(data[i]);
+            }
+        }
+    }
+    
+    return results;
+}
+
+
+document.addEventListener("DOMContentLoaded", function (event) { 
+    //do work
+    //   console.log( ' -- > ', document.readyState );// interactive
+    //   console.log( "dsp table : ", document.getElementById("displayTable") );
+    // var table = document.getElementById("displayTable");
+    var data = JSON.parse(window.localStorage.getItem("allHandsets"));
+    // console.log('---.--- ; ', data);
+    insertRowsToTable(data, "displayTable");
 });
 
 
-function insertRowToTable( dataRows, tableId ) {
-	var table = document.getElementById( tableId );
-  	// var data = JSON.parse( indow.localStorage.getItem("allHandsets") );
-
-  	dataRows.forEach(function(item, index){// array of objects
-  		console.log(item, index);
-  		var row = table.insertRow(-1);// last position
-  		var cellPos = 0;
-  		for (var prop in item){
-  			console.log(prop);
-  			if( typeof(item) == 'object' && item.hasOwnProperty ){
-	  			row.insertCell( cellPos ).innerHTML = item[prop];
-	  			cellPos++;
-	  		}
-  		}
-  	});
-
+function insertRowsToTable(dataRows, tableId) {
+    var table = document.getElementById(tableId);
+    // var data = JSON.parse( indow.localStorage.getItem("allHandsets") );
+    if (!table) {
+        return;
+    }
+    console.log('table.rows : ', table.rows, table.rows.length);
+    while (table.rows.length > 2) {
+        table.deleteRow( -1 );
+    }
+    dataRows.forEach(function (item, index) {// array of objects
+        // console.log(item, index);
+        var row = table.insertRow(-1);// last position
+        var cellPos = 0;
+        for (var prop in item) {
+            // console.log(prop);
+            if (typeof (item) == 'object' && item.hasOwnProperty) {
+                row.insertCell(cellPos).innerHTML = item[prop];
+                cellPos++;
+            }
+        }
+    });
 }
