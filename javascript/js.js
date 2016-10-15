@@ -1,20 +1,21 @@
 'use strict';
 
 // console.log("-- : ", window.localStorage, typeof(Storage));
+var handsets = [];
 function init() {
-	var handsets = [
-		{name: "OnePlus 1", company: "OP-OnePlus", releaseDate: "Mar 2016"},
-		{name: "OnasasePlus 2", company: "OP-OnePlus", releaseDate: "Mar 2016"},
-		{name: "OnePlus 3", company: "OP-OnePlus", releaseDate: "Mar 2016"},
-		{name: "OnePlus 4", company: "OP-OnePlus", releaseDate: "Mar 2016"},
-		{name: "OnePlus 5", company: "OP-OnePlus", releaseDate: "Mar 2016"},
-		{name: "OnePlus 6", company: "OP-OnePlus", releaseDate: "Mar 2016"},
-		{name: "OnePlus 7",company: "OP-OnePlus", releaseDate: "Mar 2016"},
-		{name: "OnePlus 8",company: "OP-OnePlus", releaseDate: "Mar 2016"},
-		{name: "OnePlus 9",company: "OP-OnePlus", releaseDate: "Mar 2016"},
-		{name: "OnePlus 10",company: "OP-OnePlus", releaseDate: "Mar 2016"},
-		{name: "OnePlus 11",company: "OP-OnePlus", releaseDate: "Mar 2016"},
-		{name: "OnePlus 12",company: "OP-OnePlus", releaseDate: "Mar 2016"}
+	handsets = [
+		{name: "OnePlus 1", company: "OP-OnePlus", releaseDate: "Mar 2016"		,id: 1 },
+        {name: "OnasasePlus 2", company: "OP-OnePlus", releaseDate: "Mar 2016"	,id: 2 },
+        {name: "OnePlus 3", company: "OP-OnePlus", releaseDate: "Mar 2016"		,id: 3 },
+        {name: "OnePlus 4", company: "OP-OnePlus", releaseDate: "Mar 2016"		,id: 4 },
+        {name: "OnePlus 5", company: "OP-OnePlus", releaseDate: "Mar 2016"		,id: 5 },
+        {name: "OnePlus 6", company: "OP-OnePlus", releaseDate: "Mar 2016"		,id: 6 },
+        {name: "OnePlus 7",company: "OP-OnePlus", releaseDate: "Mar 2016"		,id: 7 },
+        {name: "OnePlus 8",company: "OP-OnePlus", releaseDate: "Mar 2016"		,id: 8 },
+        {name: "OnePlus 9",company: "OP-OnePlus", releaseDate: "Mar 2016"		,id: 9 },
+        {name: "OnePlus 10",company: "OP-OnePlus", releaseDate: "Mar 2016"		,id: 10},
+        {name: "OnePlus 11",company: "OP-OnePlus", releaseDate: "Mar 2016"		,id: 11},
+        {name: "OnePlus 12",company: "OP-OnePlus", releaseDate: "Mar 2016"		,id: 12}
 	];
 	// if( !window.localStorage.hasOwnProperty("allHandsets") ) {
 		window.localStorage.setItem("allHandsets", JSON.stringify( handsets ));
@@ -29,6 +30,13 @@ function addPhone(){
 	displayView.style.display = "none";
 	var inputView = document.getElementById( 'inputView' );
 	inputView.style.display = "";
+}
+
+function navigateToSearch(){
+    var displayView = document.getElementById( 'displayView' );
+	displayView.style.display = "";
+	var inputView = document.getElementById( 'inputView' );
+	inputView.style.display = "none";
 }
 
 function saveForm(){
@@ -85,19 +93,21 @@ var onsearchEnter = function(){
 }
 
 function searchForString(searchFor) {// TODO: bug on 2nd time search
-    var results = [];
-    var data = JSON.parse(window.localStorage.getItem("allHandsets"));
-    console.log('data : ', data);
+    searchFor = searchFor.toLowerCase();
+debugger;
+    var results = {};
+    var data = handsets;
+    // console.log('data : ', data);
     for (var i = 0; i < data.length; i++) {
-        // debugger;
         for (var key in data[i]) {
-            if (data[i][key].indexOf(searchFor) != -1) {
-                results.push(data[i]);
+            if (key != 'id' && data[i][key].toLowerCase().indexOf(searchFor) != -1) {
+                // results.push(data[i]);
+                results[data[i].id] = data[i];
             }
         }
     }
     
-    return results;
+    return Object.values( results );
 }
 
 
@@ -106,19 +116,20 @@ document.addEventListener("DOMContentLoaded", function (event) {
     //   console.log( ' -- > ', document.readyState );// interactive
     //   console.log( "dsp table : ", document.getElementById("displayTable") );
     // var table = document.getElementById("displayTable");
-    var data = JSON.parse(window.localStorage.getItem("allHandsets"));
-    // console.log('---.--- ; ', data);
+    var data = handsets;//JSON.parse(window.localStorage.getItem("allHandsets"));
+    console.log('---.--- ; ', data);
     insertRowsToTable(data, "displayTable");
 });
 
 
 function insertRowsToTable(dataRows, tableId) {
+    debugger;
     var table = document.getElementById(tableId);
     // var data = JSON.parse( indow.localStorage.getItem("allHandsets") );
     if (!table) {
         return;
     }
-    console.log('table.rows : ', table.rows, table.rows.length);
+    // console.log('table.rows : ', table.rows, table.rows.length);
     while (table.rows.length > 2) {
         table.deleteRow( -1 );
     }
@@ -128,7 +139,7 @@ function insertRowsToTable(dataRows, tableId) {
         var cellPos = 0;
         for (var prop in item) {
             // console.log(prop);
-            if (typeof (item) == 'object' && item.hasOwnProperty) {
+            if (typeof (item) == 'object' && item.hasOwnProperty(prop) && prop != 'id') {
                 row.insertCell(cellPos).innerHTML = item[prop];
                 cellPos++;
             }
