@@ -18,7 +18,7 @@
 				<input type="text" style="width: 100%;"/>
 			</div>
 	  	</div>
-	  	<div class="grid" id="displayView">
+	  	<div class="grid" id="displayView" style="display: none;">
 	  		<table id="displayTable">
 	  			<thead class="column-header">
 	  				<tr>
@@ -35,14 +35,16 @@
 	  		</table>
 	  		<button type="button" style="cursor: pointer;" onclick="addPhone();">New Phone</button>
 	  	</div>
-	  	<div id="inputView" style="display: none;" onsubmit="submitPhone();">
+	  	<!--<div id="inputView" style="display: none;" onsubmit="submitPhone();">-->
+              <!--<div id="inputView" onsubmit="submitPhone();">-->
 		  	<form id="inputForm" name="input" action="#" method="post">
-	    	    First name: <input type="text" name="firstname" value="first name"><br/>
-	    	    Last name: <input type="text" name="lastname" value="last name"><br/>
-	    	    E-mail: <input type="email" name="email" value="e-mail address"><br/><br/>
+	    	    <span style="color: red">*</span> Mobile Name: <input type="text" name="mName" placeholder="first name"><br/>
+	    	    <span style="color: red">*</span> Company:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <input type="text" name="mCompany" placeholder="last name"><br/>
+	    	    <span style="color: red">*</span> Release Date: <input type="date" name="mReleaseDt" placeholder="dd-mm-yyyy"><br/><br/>
 	        </form>
-	        <button type="button" style="cursor: pointer;" onclick="saveForm();">Save</button>
-        </div>
+            <span id="errMsg" style="display: none;color: red; font-weight: bold; folt-style: italic"></span></br>
+	        <button type="submit" style="cursor: pointer;" onclick="saveForm();">Save</button>
+        <!--</div>-->
 	</div>
 
 	<!-- <div id="inputForm"> -->

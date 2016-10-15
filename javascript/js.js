@@ -35,12 +35,37 @@ function saveForm(){
 	var form = document.getElementById("inputForm");
 	if( form ) {
 		console.log('got form : ', form);
+        // console.log( form.elements.namedItem("firstname").value );
+        var newPhone = {
+            name: form.elements.namedItem("mName").value.trim(),
+            company: form.elements.namedItem("mCompany").value.trim(),
+            releaseDate: form.elements.namedItem("mReleaseDt").value.trim()
+        };
+        var isValid = validateNewData( newPhone );
+        // var mCompany = form.elements.namedItem("mReleaseDt").value;
+        console.log('Is valid input :', isValid);
 	}
 }
 
-function submitPhone(){
-	//TODO: from here
+function validateNewData( newData ) {
+    var errMsgElem = document.getElementById("errMsg");
+    if( !(newData.name && newData.company && newData.releaseDate) ) {
+        if( errMsgElem ){
+            errMsgElem.style.display = '';
+            errMsgElem.innerHTML = 'fields marked with <span style="color: red">*</span> are mandatory !';
+        }
+        return false;
+    }
+    if( errMsgElem ){
+        errMsgElem.style.display = 'none';
+        errMsgElem.innerHTML = '';
+    }
+    return true;
 }
+
+// function submitPhone(){
+// 	//TODO: from here
+// }
 
 document.addEventListener("DOMContentLoaded", function(event) { 
   //do work
