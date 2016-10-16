@@ -11,15 +11,7 @@ var paging = {
     totalRecords: -1,
     currPageData: []
 };
-console.log('file loaded ....  ..  ');
-// window.onload = function(){
-//     console.log('window loadedddd.........');
-//     init();
-// }
-
-// debugger;
 function nextPage() {
-    // debugger;
     if( !isNaN(paging.pageNo) ){
         if( paging.pageNo < paging.totalPages ) {
             paging.pageNo++;
@@ -35,7 +27,6 @@ function prevPage() {
             insertRowsToTable( handsets );
         }
     }
-    // insertRowsToTable();
 }
 
 function init() {
@@ -55,7 +46,11 @@ function init() {
         {name: "c OnePlus 11",company: "OP-OnePlus", releaseDate: "18 Mar 2016", id: 11},
         {name: "i OnePlus 12",company: "OP-OnePlus", releaseDate: "12 Mar 2016", id: 12}
 	];
-	window.localStorage.setItem("allHandsets", JSON.stringify( handsets ));
+    if( !( window.localStorage.getItem("allHandsets") ) ){
+    	window.localStorage.setItem("allHandsets", JSON.stringify( handsets ));
+    } else {
+        handsets = JSON.parse( window.localStorage.getItem("allHandsets") );
+    }
     paging.totalRecords = handsets.length;
     paging.totalPages = Math.ceil( handsets.length / paging.pageSize );
 }
@@ -88,17 +83,25 @@ function saveForm(){
         var newPhone = {
             name: form.elements.namedItem("mName").value.trim(),
             company: form.elements.namedItem("mCompany").value.trim(),
-            releaseDate: form.elements.namedItem("mReleaseDt").value.trim()
+            releaseDate: form.elements.namedItem("mReleaseDt").value.trim(),
+            description: form.elements.namedItem("mDesc").value.trim(),
         };
         var isValid = validateNewData( newPhone );
         // var mCompany = form.elements.namedItem("mReleaseDt").value;
         console.log('Is valid input :', isValid);
+        if( isValid ) {
+            console.log('save to db..');
+            var allData = JSON.parse( window.localStorage.getItem("allHandsets") ) || [];
+            allData.push( newPhone );
+            window.localStorage.setItem("allHandsets", JSON.stringify( allData ));
+        }
 	}
 }
 
 function validateNewData( newData ) {
+    console.log('new - ', newData);
     var errMsgElem = document.getElementById("errMsg");
-    if( !(newData.name && newData.company && newData.releaseDate) ) {
+    if( !(newData.name && newData.company && newData.description) ) {
         if( errMsgElem ){
             errMsgElem.style.display = '';
             errMsgElem.innerHTML = 'fields marked with <span style="color: red">*</span> are mandatory !';

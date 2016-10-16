@@ -6,26 +6,20 @@
 	</head>
 	<body>
 	<header> <h1>Your Mobile Gallary !</h1> </header>
-	<!-- <div class="left-column">
-	  <div>
-	  	<h3>Sort Options</h3>
-	  	<ul>
-	  		<li></li>
-	  	</ul>
-
-	  </div>
-
-	  <div>Left Side Row 2</div>
-	  <div>Left Side Row 3</div>
-	</div> -->
 	<div class="right-column">
-	  	<div>
+	  	<!-- <div>
 	  		<h3>Search your handset here !</h3>
 	  		<div>
 				<input id="searchInp" type="text" style="width: 30%;" onkeyup="onsearchEnter()"/>
 			</div>
-	  	</div>
-	  	<div class="grid" id="displayView" style="">
+	  	</div> -->
+	  	<div class="grid" id="displayView" style="display: none;">
+		  	<div>
+		  		<h3>Search your handset here !</h3>
+		  		<div>
+					<input id="searchInp" type="text" style="width: 30%;" onkeyup="onsearchEnter()"/>
+				</div>
+		  	</div>
 	  		<h3>Total handsets : <span id="totalCnt"></span></h3>
 	  		<table id="displayTable">
 	  			<thead class="column-header">
@@ -87,15 +81,42 @@
 	  		<button type="button" style="cursor: pointer;" onclick="addPhone();">New Phone</button>
 	  	</div>
 	  	<!--<div id="inputView" style="display: none;" onsubmit="submitPhone();">-->
-        <div id="inputView" style="display: none;">
-		  	<form id="inputForm" name="input" action="#" method="post">
-	    	    <span style="color: red">*</span> Mobile Name: <input type="text" name="mName" placeholder="first name"><br/>
-	    	    <span style="color: red">*</span> Company:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <input type="text" name="mCompany" placeholder="last name"><br/>
-	    	    <span style="color: red">*</span> Release Date: <input type="date" name="mReleaseDt" placeholder="dd-mm-yyyy"><br/><br/>
+        <!-- <div id="inputView" style="display: none;"> -->
+        <div id="inputView">
+        	<div>
+		  		<h3>Enter new handset details here:</h3>
+		  	</div>
+		  	<form id="inputForm" name="input" action="#" method="post" style="width: 100%;">
+			  	<div style="width: 45%;float: left;">
+			  		<div class="input">
+			  			<label>Handset <span style="color: red">*</span></label>
+			  			<input type="text" name="mName" placeholder="handset name">
+			  		</div>
+			  		<div class="input">
+			  			<label>Company <span style="color: red">*</span></label>
+			  			<input type="text" name="mCompany" placeholder="company name"/>
+			  		</div>
+			  		<div class="input">
+			  			<label>Release Date</label>
+			  			<input type="date" name="mReleaseDt" placeholder="dd-mm-yyyy">
+			  		</div>
+		    	    <!-- <span style="color: red">*</span> Handset Name: <input type="text" name="mName" placeholder="first name"><br/>
+		    	    <span style="color: red">*</span> Company:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <input type="text" name="mCompany" placeholder="last name"><br/>
+		    	    <span style="color: red">*</span> Release Date: <input type="date" name="mReleaseDt" placeholder="dd-mm-yyyy"><br/><br/> -->
+	    	    </div>
+	    	    <div style="width: 45%;float: left;">
+	    	    	<div class="input">
+			  			<label>Description <span style="color: red">*</span></label>
+			  			<!-- <input type="date" name="mReleaseDt" placeholder="dd-mm-yyyy"> -->
+			  			<textarea name="mDesc" rows="4" cols="200"></textarea>
+			  		</div>
+	    	    </div>
 	        </form>
-            <span id="errMsg" style="display: none;color: red; font-weight: bold; folt-style: italic"></span></br>
-	        <button type="submit" style="cursor: pointer;" onclick="saveForm();">Save</button>
-            <button type="submit" style="cursor: pointer;" onclick="navigateToSearch();">Back</button>
+	        <div style="width: 100%; float: left;">
+	            <span id="errMsg" style="display: none;color: red; font-weight: bold; folt-style: italic"></span></br>
+		        <button type="submit" style="cursor: pointer;" onclick="saveForm();">Save</button>
+	            <button type="submit" style="cursor: pointer;" onclick="navigateToSearch();">Back</button>
+            </div>
         </div>
 	</div>
 
@@ -112,6 +133,27 @@
 		    background-color: black;
 		    clear: left;
 		    text-align: center;
+		}
+
+		.input label {
+		    width: 100%;
+		    float: left;
+		    font-size: x-large;
+		    font-weight: bold;
+		}
+
+		.input input, textarea {
+		    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+		    -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+		    box-shadow: inset 2px 2px 2px 0px #dddddd;
+		    /* height: 200px; */
+		    margin: 10px;
+		    /* overflow: auto; */
+		    padding: 7px 10px;
+		    width: 60%;
+		    font-family: tahoma;
+		    font-size: 15px;
+		    border: 1px solid #aaa;
 		}
 
 		.menu-item {
