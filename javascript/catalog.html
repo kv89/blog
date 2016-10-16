@@ -13,21 +13,23 @@
 				<input id="searchInp" type="text" style="width: 30%;" onkeyup="onsearchEnter()"/>
 			</div>
 	  	</div> -->
-	  	<div class="grid" id="displayView" style="display: none;">
+	  	<div class="grid" id="displayView" style="">
+		  	<h3>Search your handset here !</h3>
 		  	<div>
-		  		<h3>Search your handset here !</h3>
-		  		<div>
-					<input id="searchInp" type="text" style="width: 30%;" onkeyup="onsearchEnter()"/>
+		  		<div class="input">
+					<input id="searchInp" type="text" style="" onkeyup="onsearchEnter()"/>
 				</div>
 		  	</div>
 	  		<h3>Total handsets : <span id="totalCnt"></span></h3>
+	  		<div style="text-align: center;">
 	  		<table id="displayTable">
-	  			<thead class="column-header">
+	  			<thead style="font-size: 23px;">
 	  				<tr>
-		  				<td>
+		  				<td style="width: 10%; padding-left: 2px;">
 		  					Name
 		  					<div class="dropdown">
-							  <div onclick="showHideSortOptions('name');" style="cursor: pointer;"> <p>&darr;</p> </div>
+							  <!-- <div onclick="showHideSortOptions('name');" style="cursor: pointer;"> <p>&darr;</p> </div> -->
+							  <p onclick="showHideSortOptions('name');" style="cursor: pointer;">&darr;</p>
 							  <div id="nameSortDrp" class="dropdown-content">
 							  	<div class="menu-item">
 							    	<span style="cursor: pointer;" onclick="sortName( 0 );showHideSortOptions('name');"> a - z </span>
@@ -38,7 +40,7 @@
 							  </div>
 							</div>
 		  				</td>
-		  				<td>
+		  				<td style="width: 10%; padding-left: 2px;">
 		  					Company
 		  					<div class="dropdown">
 							  <div onclick="showHideSortOptions('company')" style="cursor: pointer;"> <p>&darr;</p> </div>
@@ -52,7 +54,7 @@
 							  </div>
 							</div>
 		  				</td>
-		  				<td>
+		  				<td style="width: 10%; padding-left: 2px;">
 		  					Release Date
 		  					<div class="dropdown">
 							  <div onclick="showHideSortOptions('date');" style="cursor: pointer;"> <p>&darr;</p> </div>
@@ -66,23 +68,22 @@
 							  </div>
 							</div>
 						</td>
-		  				<td>Ratings</td>
+		  				<td style="width: 30%; padding-left: 2px;">Description</td>
 	  				</tr>
 	  			</thead>
-	  			<tbody>
+	  			<tbody style="font-size: 20px; ">
 	  				<tr class="row"></tr>		
 	  			</tbody>
 	  			
 	  		</table>
-	  		<div id="paging">
+	  		</div>
+	  		<div id="paging" style="text-align: center;">
 	  			<button onclick="prevPage();"> < </button>
 	  			<button onclick="nextPage();"> > </button>
 	  		</div>
-	  		<button type="button" style="cursor: pointer;" onclick="addPhone();">New Phone</button>
+	  		<button type="button" style="cursor: pointer; width: 15%;" onclick="addPhone();">New Handset</button>
 	  	</div>
-	  	<!--<div id="inputView" style="display: none;" onsubmit="submitPhone();">-->
-        <!-- <div id="inputView" style="display: none;"> -->
-        <div id="inputView">
+        <div id="inputView" style="display: none;">
         	<div>
 		  		<h3>Enter new handset details here:</h3>
 		  	</div>
@@ -156,6 +157,11 @@
 		    border: 1px solid #aaa;
 		}
 
+		button {
+			width: 5%;
+			height: 25px;
+			margin: 2%;
+		}
 		.menu-item {
 			background-color: #e6e6de 
 		}
@@ -186,31 +192,39 @@
 		}
 		
 		table {
-			table-layout: auto;
+			table-layout: fixed;
+			width: 90%;
+
+			margin: 0 auto; 
+    		text-align: left;
 		}
 		table thead {
 		    display: table-row-group;
 		    vertical-align: middle;
 		    border-color: inherit;
 		    font-weight: bold;
-		    text-align: center;
+		    text-align: justify;
 		    /*font-style: italic;*/
 		}
 
-		table thead,tbody tr {
+		/*table thead tr {
+			width: 100%;
+		}*/
+
+		/*table thead,tbody tr {
 			padding: 2%;
 		}
 
 		table thead,tbody tr td, th {
 			width: 32%;
-		}
+		}*/
 
 		table tbody {
 		    display: table-row-group;
 		    vertical-align: middle;
 		    border-color: inherit;
 		    font-style: italic;
-		    text-align: center;
+		    text-align: justify;
 		}
 
 		/*---------------*/

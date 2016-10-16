@@ -30,21 +30,21 @@ function prevPage() {
 }
 
 function init() {
-	handsets = [
+	handsets = [ // initial sample data
 		{name: "l OnePlus 1", company: "OP-OnePlus", releaseDate: "11 Mar 2016", id: 1 },
         {name: "h OnasasePlus 2", company: "OP-OnePlus", releaseDate: "2 Mar 2016", id: 2 },
         {name: "d OnePlus 3", company: "OP-OnePlus", releaseDate: "30 Mar 2016", id: 3 },
         {name: "k OnePlus 4", company: "OP-OnePlus1", releaseDate: "14 Mar 2016", id: 4 },
-        {name: "b OnePlus 5", company: "OP-OnePlus", releaseDate: "25 Mar 2016", id: 5 },
+        {name: "b OnePlus 5", company: "SAMSUNG", releaseDate: "25 Mar 2016", id: 5 },
 
-        {name: "f OnePlus 6", company: "OP-OnePlus", releaseDate: "16 Mar 2016", id: 6 },
-        {name: "a OnePlus 7",company: "OP-OnePlus", releaseDate: "27 Mar 2016", id: 7 },
-        {name: "g OnePlus 8",company: "OP-OnePlus", releaseDate: "18 Mar 2016", id: 8 },
-        {name: "e OnePlus 9",company: "OP-OnePlus", releaseDate: "9 Mar 2016", id: 9 },
-        {name: "j OnePlus 10",company: "OP-OnePlus", releaseDate: "1 Mar 2016"		,id: 10},
+        {name: "f OnePlus 6", company: "SAMSUNG", releaseDate: "16 Mar 2016", id: 6 },
+        {name: "a OnePlus 7",company: "SAMSUNG", releaseDate: "27 Mar 2016", id: 7 },
+        {name: "g OnePlus 8",company: "SAMSUNG", releaseDate: "18 Mar 2016", id: 8 },
+        {name: "e OnePlus 9",company: "NOKIA", releaseDate: "9 Mar 2016", id: 9 },
+        {name: "j OnePlus 10",company: "NOKIA", releaseDate: "1 Mar 2016"		,id: 10},
 
-        {name: "c OnePlus 11",company: "OP-OnePlus", releaseDate: "18 Mar 2016", id: 11},
-        {name: "i OnePlus 12",company: "OP-OnePlus", releaseDate: "12 Mar 2016", id: 12}
+        {name: "c OnePlus 11",company: "NOKIA", releaseDate: "18 Mar 2016", id: 11},
+        {name: "i OnePlus 12",company: "NOKIA", releaseDate: "12 Mar 2016", id: 12}
 	];
     if( !( window.localStorage.getItem("allHandsets") ) ){
     	window.localStorage.setItem("allHandsets", JSON.stringify( handsets ));
@@ -61,7 +61,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function addPhone(){
-	console.log('new phone.');
+	// console.log('new phone.');
+    var form = document.getElementById("inputForm");
+    if( form ) {
+        form.elements.namedItem("mName").value = '';
+        form.elements.namedItem("mCompany").value = '';
+        form.elements.namedItem("mReleaseDt").value = '';
+        form.elements.namedItem("mDesc").value = '';
+    }
 	var displayView = document.getElementById( 'displayView' );
 	displayView.style.display = "none";
 	var inputView = document.getElementById( 'inputView' );
@@ -87,13 +94,16 @@ function saveForm(){
             description: form.elements.namedItem("mDesc").value.trim(),
         };
         var isValid = validateNewData( newPhone );
-        // var mCompany = form.elements.namedItem("mReleaseDt").value;
-        console.log('Is valid input :', isValid);
+        // console.log('Is valid input :', isValid);
         if( isValid ) {
             console.log('save to db..');
-            var allData = JSON.parse( window.localStorage.getItem("allHandsets") ) || [];
-            allData.push( newPhone );
-            window.localStorage.setItem("allHandsets", JSON.stringify( allData ));
+            // handsets = JSON.parse( window.localStorage.getItem("allHandsets") ) || [];
+            handsets.push( newPhone );
+            
+            window.localStorage.setItem("allHandsets", JSON.stringify( handsets ));
+
+            navigateToSearch();
+            insertRowsToTable(handsets);
         }
 	}
 }
@@ -108,6 +118,7 @@ function validateNewData( newData ) {
         }
         return false;
     }
+
     if( errMsgElem ){
         errMsgElem.style.display = 'none';
         errMsgElem.innerHTML = '';
@@ -121,7 +132,7 @@ var onsearchEnter = function(){// TODO: not optimized yet
     if( searchElem ){
         searchFor =  searchElem.value.trim();
         if( !searchFor || searchFor == '' ) {
-            insertRowsToTable(handsets, "displayTable");
+            insertRowsToTable(handsets);
             return ;
         }
     } else {
@@ -130,12 +141,7 @@ var onsearchEnter = function(){// TODO: not optimized yet
     console.log('search for : ', searchFor);
 	
     var filterData = searchForString( searchFor );
-    // console.log('Result : ',  filterData );
-    // debugger;
-    // if( searchFor.length == 0 && filterData.length == 0){
-    //     filterData = handsets;
-    // }
-    insertRowsToTable(filterData, "displayTable");
+    insertRowsToTable(filterData);
     
     
 }
@@ -200,11 +206,15 @@ function createTable(){
     paging.currPageData.forEach(function (item, index) {// array of objects
         // debugger;
         var row = table.insertRow(-1);// first position
+        row.style["line-height"] = "40px";
+        row.style["margin"] = "4px";
         var cellPos = 0;
         for (var prop in item) {
             // console.log(prop);
             if (typeof (item) == 'object' && item.hasOwnProperty(prop) && prop != 'id') {
-                row.insertCell(cellPos).innerHTML = item[prop];
+                var cell = row.insertCell(cellPos);
+                cell.innerHTML = item[prop];
+                cell.style["padding-left"] = "1%";
                 cellPos++;
             } 
         }
