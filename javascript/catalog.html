@@ -6,11 +6,18 @@
 	</head>
 	<body>
 	<header> <h1>Your Mobile Gallary !</h1> </header>
-	<div class="left-column">
-	  <div>Left Side Row 1</div>
+	<!-- <div class="left-column">
+	  <div>
+	  	<h3>Sort Options</h3>
+	  	<ul>
+	  		<li></li>
+	  	</ul>
+
+	  </div>
+
 	  <div>Left Side Row 2</div>
 	  <div>Left Side Row 3</div>
-	</div>
+	</div> -->
 	<div class="right-column">
 	  	<div>
 	  		<h3>Search your handset here !</h3>
@@ -22,9 +29,36 @@
 	  		<table id="displayTable">
 	  			<thead class="column-header">
 	  				<tr>
-		  				<td>Name</td>
-		  				<td>Company</td>
-		  				<td>Release Date</td>
+		  				<td>
+		  					Name
+		  					<div class="dropdown">
+							  <div onclick="myFunction('name');" style="cursor: pointer;"> <p>&darr;</p> </div>
+							  <div id="nameSortDrp" class="dropdown-content">
+							    <a href="" style="cursor: pointer;" onclick="sortName( 0 );"> a - z </a>
+							    <a href="" style="cursor: pointer;" onclick="sortName( 1 );"> z - a </a>
+							  </div>
+							</div>
+		  				</td>
+		  				<td>
+		  					Company
+		  					<div class="dropdown">
+							  <div onclick="myFunction('company')" style="cursor: pointer;"> <p>&darr;</p> </div>
+							  <div id="companySortDrp" class="dropdown-content">
+							    <a href=""> a - z </a>
+							    <a href=""> z - a </a>
+							  </div>
+							</div>
+		  				</td>
+		  				<td>
+		  					Release Date
+		  					<div class="dropdown">
+							  <div onclick="myFunction('date');" style="cursor: pointer;"> <p>&darr;</p> </div>
+							  <div id="dateSortDrp" class="dropdown-content">
+							    <a href=""> Oldest First </a>
+							    <a href=""> Newest First </a>
+							  </div>
+							</div>
+						</td>
 		  				<td>Ratings</td>
 	  				</tr>
 	  			</thead>
@@ -33,6 +67,10 @@
 	  			</tbody>
 	  			
 	  		</table>
+	  		<div id="paging">
+	  			<button onclick="prevPage();"> < </button>
+	  			<button onclick="nextPage();"> > </button>
+	  		</div>
 	  		<button type="button" style="cursor: pointer;" onclick="addPhone();">New Phone</button>
 	  	</div>
 	  	<!--<div id="inputView" style="display: none;" onsubmit="submitPhone();">-->
@@ -74,7 +112,9 @@
 		}
 
 		.right-column{
-		  width: 86%; 
+		  width: 100%; 
+		  padding: 1em;
+
 		  border:solid 1px black;
 		}
 
@@ -109,5 +149,53 @@
 		    font-style: italic;
 		    text-align: center;
 		}
+
+		/*---------------*/
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+		/*---------------*/
+
+
 	</style>
 </html>
