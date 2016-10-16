@@ -3,7 +3,7 @@
 var handsets = [];
 var paging = {
     pageNo: 1,
-    pageSize: 2,
+    pageSize: 3,
 
     totalPages: -1,
     totalRecords: -1,
@@ -249,35 +249,35 @@ function init() {
             name: "Samsung Galaxy S7 Edge",
             company: "Samsung",
             releaseDate: "1 Mar 2016",
-            description: `Samsung has used an all new Exynos 8890 SoC on the new Galaxy S7 Edge, and there is 4GB of RAM along with 32GB of internal storage. It features an AMOLED display with 2560x1440-pixel resolution, but the screen size has been increased from 5.1 inches to 5.5 inches. This has allowed Samsung to increase the battery size from 2600mAh to 3600mAh, which allows it to offer better battery life. The biggest change in the phone, though, is the new 12MP Dual Pixel camera, which shoots amazing photographs even in low light. All of these combine to make the Samsung Galaxy S7 Edge the best Android phone to buy in India today.`,
+            description: "Samsung has used an all new Exynos 8890 SoC on the new Galaxy S7 Edge, and there is 4GB of RAM along with 32GB of internal storage. It features an AMOLED display with 2560x1440-pixel resolution, but the screen size has been increased from 5.1 inches to 5.5 inches. This has allowed Samsung to increase the battery size from 2600mAh to 3600mAh, which allows it to offer better battery life. The biggest change in the phone, though, is the new 12MP Dual Pixel camera, which shoots amazing photographs even in low light. All of these combine to make the Samsung Galaxy S7 Edge the best Android phone to buy in India today.",
             id: 1,
         },
         {
             name: "OnePlus 3",
             company: "OnePlus",
             releaseDate: "1 Mar 2016",
-            description: `The OnePlus 3 has grabbed the third position on our ‘best phones to buy’ with ease. This Android phone is an all-rounder, and offers the best performance-to-price ratio among the latest flagship Android phones. This is the first time that OnePlus made an all-metal smartphone, and while the phone is reminiscent of the HTC One M9, it is still a good design. The device is powered by Qualcomm Snapdragon 820 SoC and has 6GB of RAM. The 16MP camera on the back does not disappoint either and offers PDAF as well as OIS. Like most latest Android phones, battery life is not that great, but still manages to go on for a whole day on a single charge.`,
+            description: "The OnePlus 3 has grabbed the third position on our ‘best phones to buy’ with ease. This Android phone is an all-rounder, and offers the best performance-to-price ratio among the latest flagship Android phones. This is the first time that OnePlus made an all-metal smartphone, and while the phone is reminiscent of the HTC One M9, it is still a good design. The device is powered by Qualcomm Snapdragon 820 SoC and has 6GB of RAM. The 16MP camera on the back does not disappoint either and offers PDAF as well as OIS. Like most latest Android phones, battery life is not that great, but still manages to go on for a whole day on a single charge.",
             id: 2,
         },
         {
             name: "LG G5",
             company: "LG",
             releaseDate: "1 Mar 2016",
-            description: `The LG G5 is powered by a Qualcomm Snapdragon 820 SoC. There is 4GB of RAM and 32GB of native storage, along with microSD card support of up to 200GB. The smaller, 5.3-inch display is a delight to look at, and offers 2560x1440-pixel screen resolution. The colours of the display are among the most well-balanced of the latest Android phones. The removable battery is small, but lasts for a day. LG will also be selling various accessories under its Friends ecosystem for the LG G5, including a camera grip with extra battery, an external amplifier and more.`,
+            description: "The LG G5 is powered by a Qualcomm Snapdragon 820 SoC. There is 4GB of RAM and 32GB of native storage, along with microSD card support of up to 200GB. The smaller, 5.3-inch display is a delight to look at, and offers 2560x1440-pixel screen resolution. The colours of the display are among the most well-balanced of the latest Android phones. The removable battery is small, but lasts for a day. LG will also be selling various accessories under its Friends ecosystem for the LG G5, including a camera grip with extra battery, an external amplifier and more.",
             id: 3,
         },
         {
             name: "HTC 10",
             company: "HTC",
             releaseDate: "1 Mar 2016",
-            description: `The HTC 10 is another great Android phone to look for in the flagship smartphone range. The HTC 10 flaunts the suave HTC design, with latest generation hardware to boot. Powered by the Qualcomm Snapdragon 820 SoC, the HTC 10 offers great multi-tasking abilities. The OIS-assisted 12MP UltraPixel rear camera is great to shoot with, and you also get OIS on the front camera. HTC has also mastered the 2K display, and the 5.2-inch LCD5 2K resolution panel looks beautiful from all angles. However, the best part is the audio quality, which gives the best music quality you can get on any Android mobile available for purchase today.`,
+            description: "The HTC 10 is another great Android phone to look for in the flagship smartphone range. The HTC 10 flaunts the suave HTC design, with latest generation hardware to boot. Powered by the Qualcomm Snapdragon 820 SoC, the HTC 10 offers great multi-tasking abilities. The OIS-assisted 12MP UltraPixel rear camera is great to shoot with, and you also get OIS on the front camera. HTC has also mastered the 2K display, and the 5.2-inch LCD5 2K resolution panel looks beautiful from all angles. However, the best part is the audio quality, which gives the best music quality you can get on any Android mobile available for purchase today.",
             id: 4,
         },
         {
             name: "Xiaomi Mi5",
             company: "Xiaomi",
             releaseDate: "1 Mar 2016",
-            description: `Xiaomi’s two-year-long wait for the Mi 5 translated into a massive upgrade over its previous flagship smartphone in India, the Mi 4. Xiaomi has given this Android phone a complete makeover, fusing an incredibly ergonomic body with a glass-and-metal chassis. It has a 5.15-inch display that offers a well-balanced colour gamut and Full HD screen resolution. The device is powered by the Qualcomm Snapdragon 820 SoC, like most other flagship Android phones in India. Only the 3GB RAM-32GB storage variant has been launched in India, but this itself offers fluent performance. The 16MP primary camera has 4-axis OIS, and is very fast. Also, the 3000mAh battery should last you through the entire work day, comfortably.`,
+            description: "Xiaomi’s two-year-long wait for the Mi 5 translated into a massive upgrade over its previous flagship smartphone in India, the Mi 4. Xiaomi has given this Android phone a complete makeover, fusing an incredibly ergonomic body with a glass-and-metal chassis. It has a 5.15-inch display that offers a well-balanced colour gamut and Full HD screen resolution. The device is powered by the Qualcomm Snapdragon 820 SoC, like most other flagship Android phones in India. Only the 3GB RAM-32GB storage variant has been launched in India, but this itself offers fluent performance. The 16MP primary camera has 4-axis OIS, and is very fast. Also, the 3000mAh battery should last you through the entire work day, comfortably.",
             id: 5,
         },
         {
@@ -344,6 +344,7 @@ function init() {
             id: 14,
         }
     ];
+    console.log( '  --  ', window.Storage ); 
     if( !( window.localStorage.getItem("allHandsets") ) ){
         window.localStorage.setItem("allHandsets", JSON.stringify( handsets ));
     } else {
