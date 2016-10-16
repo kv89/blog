@@ -2,6 +2,7 @@
 
 // console.log("-- : ", window.localStorage, typeof(Storage));
 var handsets = [];
+// var loadCnt = 1;
 var paging = {
     pageNo: 1,
     pageSize: 5,
@@ -10,13 +11,19 @@ var paging = {
     totalRecords: -1,
     currPageData: []
 };
+console.log('file loaded ....  ..  ');
+// window.onload = function(){
+//     console.log('window loadedddd.........');
+//     init();
+// }
 
+// debugger;
 function nextPage() {
-    debugger;
+    // debugger;
     if( !isNaN(paging.pageNo) ){
         if( paging.pageNo < paging.totalPages ) {
             paging.pageNo++;
-            insertRowsToTable();
+            insertRowsToTable( handsets );
         }
     }
 }
@@ -25,7 +32,7 @@ function prevPage() {
     if( !isNaN(paging.pageNo) ){
         if( paging.pageNo > 1 ) {
             paging.pageNo--;
-            insertRowsToTable();
+            insertRowsToTable( handsets );
         }
     }
     // insertRowsToTable();
@@ -33,40 +40,29 @@ function prevPage() {
 
 function init() {
 	handsets = [
-		{name: "l OnePlus 1", company: "OP-OnePlus", releaseDate: "1 Mar 2016", id: 1 },
+		{name: "l OnePlus 1", company: "OP-OnePlus", releaseDate: "11 Mar 2016", id: 1 },
         {name: "h OnasasePlus 2", company: "OP-OnePlus", releaseDate: "2 Mar 2016", id: 2 },
-        {name: "d OnePlus 3", company: "OP-OnePlus", releaseDate: "3 Mar 2016", id: 3 },
-        {name: "k OnePlus 4", company: "OP-OnePlus1", releaseDate: "4 Mar 2016", id: 4 },
-        {name: "b OnePlus 5", company: "OP-OnePlus", releaseDate: "5 Mar 2016", id: 5 },
+        {name: "d OnePlus 3", company: "OP-OnePlus", releaseDate: "30 Mar 2016", id: 3 },
+        {name: "k OnePlus 4", company: "OP-OnePlus1", releaseDate: "14 Mar 2016", id: 4 },
+        {name: "b OnePlus 5", company: "OP-OnePlus", releaseDate: "25 Mar 2016", id: 5 },
 
-        {name: "f OnePlus 6", company: "OP-OnePlus", releaseDate: "6 Mar 2016", id: 6 },
-        {name: "a OnePlus 7",company: "OP-OnePlus", releaseDate: "7 Mar 2016", id: 7 },
-        {name: "g OnePlus 8",company: "OP-OnePlus", releaseDate: "8 Mar 2016", id: 8 },
+        {name: "f OnePlus 6", company: "OP-OnePlus", releaseDate: "16 Mar 2016", id: 6 },
+        {name: "a OnePlus 7",company: "OP-OnePlus", releaseDate: "27 Mar 2016", id: 7 },
+        {name: "g OnePlus 8",company: "OP-OnePlus", releaseDate: "18 Mar 2016", id: 8 },
         {name: "e OnePlus 9",company: "OP-OnePlus", releaseDate: "9 Mar 2016", id: 9 },
-        {name: "j OnePlus 10",company: "OP-OnePlus", releaseDate: "10 Mar 2016"		,id: 10},
+        {name: "j OnePlus 10",company: "OP-OnePlus", releaseDate: "1 Mar 2016"		,id: 10},
 
-        {name: "c OnePlus 11",company: "OP-OnePlus", releaseDate: "11 Mar 2016", id: 11},
+        {name: "c OnePlus 11",company: "OP-OnePlus", releaseDate: "18 Mar 2016", id: 11},
         {name: "i OnePlus 12",company: "OP-OnePlus", releaseDate: "12 Mar 2016", id: 12}
 	];
-	// if( !window.localStorage.hasOwnProperty("allHandsets") ) {
-		window.localStorage.setItem("allHandsets", JSON.stringify( handsets ));
-	// }
+	window.localStorage.setItem("allHandsets", JSON.stringify( handsets ));
     paging.totalRecords = handsets.length;
     paging.totalPages = Math.ceil( handsets.length / paging.pageSize );
 }
 init();
-// console.log("-- : ", window.localStorage);
-
 document.addEventListener("DOMContentLoaded", function (event) { 
-    debugger;
-    //do work
-    //   console.log( ' -- > ', document.readyState );// interactive
-    //   console.log( "dsp table : ", document.getElementById("displayTable") );
-    // var table = document.getElementById("displayTable");
-    // var data = handsets;//JSON.parse(window.localStorage.getItem("allHandsets"));
-    // console.log('---.--- ; ', data);
     paging.pageNo = 1;
-    insertRowsToTable();
+    insertRowsToTable( handsets );
 });
 
 function addPhone(){
@@ -162,21 +158,12 @@ function searchForString(searchFor) {// TODO: bug on 2nd time search
     return ret;
 }
 
-function insertRowsToTable( ) {
-    debugger;
-    // var table = document.getElementById("displayTable");
-    // // var data = JSON.parse( indow.localStorage.getItem("allHandsets") );
-    // if (!table) {
-    //     return;
-    // }
-    // // console.log('table.rows : ', table.rows, table.rows.length);
-    // while (table.rows.length > 2) {
-    //     table.deleteRow( -1 );
-    // }
-    var dataRows = handsets;
+function insertRowsToTable( totalRecords ) {
+    document.getElementById("totalCnt").innerHTML = totalRecords.length;
+    var dataRows = totalRecords; //handsets;
     var fromIndex = (paging.pageNo - 1) * paging.pageSize;
-    var noOfItems = fromIndex + paging.pageSize;
-    paging.currPageData = dataRows.slice(fromIndex, noOfItems);
+    var toIndex = fromIndex + paging.pageSize;
+    paging.currPageData = dataRows.slice(fromIndex, toIndex);// not including toIndex
     console.log('total rows in table : ', paging.currPageData.length);
 
     createTable();
@@ -196,7 +183,7 @@ function insertRowsToTable( ) {
 }
 
 function createTable(){
-    debugger;
+    // debugger;
     var table = document.getElementById("displayTable");
     // var data = JSON.parse( indow.localStorage.getItem("allHandsets") );
     if (!table) {
@@ -209,7 +196,7 @@ function createTable(){
 
     paging.currPageData.forEach(function (item, index) {// array of objects
         // debugger;
-        var row = table.insertRow(2);// first position
+        var row = table.insertRow(-1);// first position
         var cellPos = 0;
         for (var prop in item) {
             // console.log(prop);
@@ -222,7 +209,7 @@ function createTable(){
 }
 
    // --------------
-function myFunction( column ) {
+function showHideSortOptions( column ) {
     // debugger;
     if( column === 'name' ){
         document.getElementById("nameSortDrp").classList.toggle("show");
@@ -250,8 +237,48 @@ function sortName( sortOrder ) {
 
     if( handsets.length > 0 ) {
         handsets.sort( sortOrder == 0 ? asc : desc);
-        handsets.forEach(console.log);
-        insertRowsToTable();
+        // handsets.forEach(console.log);
+        insertRowsToTable( handsets );
+    }
+
+}
+
+
+function sortByCompanyName( sortOrder ) {
+    // debugger;
+    function asc( a, b ) {
+        return (a.company < b.company) ? -1 : 1;
+    }
+
+    function desc( a, b ) {
+        return (a.company < b.company) ? 1 : -1;
+    }
+
+    if( handsets.length > 0 ) {
+        handsets.sort( sortOrder == 0 ? asc : desc);
+        insertRowsToTable( handsets );
+    }
+
+}
+
+function sortByReleaseDate( sortOrder ) {
+    // debugger;
+    function asc( a, b ) {
+        debugger;
+        var dt1 = new Date(a.releaseDate);
+        var dt2 = new Date(b.releaseDate);
+        return dt1- dt2;
+    }
+
+    function desc( a, b ) {
+        var dt1 = new Date(a.releaseDate);
+        var dt2 = new Date(b.releaseDate);
+        return dt2 - dt1;
+    }
+
+    if( handsets.length > 0 ) {
+        handsets.sort( sortOrder == 0 ? asc : desc);
+        insertRowsToTable( handsets );
     }
 
 }

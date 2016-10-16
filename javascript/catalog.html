@@ -26,36 +26,49 @@
 			</div>
 	  	</div>
 	  	<div class="grid" id="displayView" style="">
+	  		<h3>Total handsets : <span id="totalCnt"></span></h3>
 	  		<table id="displayTable">
 	  			<thead class="column-header">
 	  				<tr>
 		  				<td>
 		  					Name
 		  					<div class="dropdown">
-							  <div onclick="myFunction('name');" style="cursor: pointer;"> <p>&darr;</p> </div>
+							  <div onclick="showHideSortOptions('name');" style="cursor: pointer;"> <p>&darr;</p> </div>
 							  <div id="nameSortDrp" class="dropdown-content">
-							    <a href="" style="cursor: pointer;" onclick="sortName( 0 );"> a - z </a>
-							    <a href="" style="cursor: pointer;" onclick="sortName( 1 );"> z - a </a>
+							  	<div class="menu-item">
+							    	<span style="cursor: pointer;" onclick="sortName( 0 );showHideSortOptions('name');"> a - z </span>
+							    </div>
+							    <div class="menu-item">
+							    	<span style="cursor: pointer;" onclick="sortName( 1 );showHideSortOptions('name');"> z - a </span>
+							    </div>
 							  </div>
 							</div>
 		  				</td>
 		  				<td>
 		  					Company
 		  					<div class="dropdown">
-							  <div onclick="myFunction('company')" style="cursor: pointer;"> <p>&darr;</p> </div>
+							  <div onclick="showHideSortOptions('company')" style="cursor: pointer;"> <p>&darr;</p> </div>
 							  <div id="companySortDrp" class="dropdown-content">
-							    <a href=""> a - z </a>
-							    <a href=""> z - a </a>
+							  	<div class="menu-item">
+							    	<span style="cursor: pointer;" onclick="sortByCompanyName( 0 );showHideSortOptions('company');"> a - z </span>
+							    </div>
+							    <div class="menu-item">
+							    	<span style="cursor: pointer;" onclick="sortByCompanyName( 1 );showHideSortOptions('company');"> z - a </span>
+							    </div>
 							  </div>
 							</div>
 		  				</td>
 		  				<td>
 		  					Release Date
 		  					<div class="dropdown">
-							  <div onclick="myFunction('date');" style="cursor: pointer;"> <p>&darr;</p> </div>
+							  <div onclick="showHideSortOptions('date');" style="cursor: pointer;"> <p>&darr;</p> </div>
 							  <div id="dateSortDrp" class="dropdown-content">
-							    <a href=""> Oldest First </a>
-							    <a href=""> Newest First </a>
+							  	<div class="menu-item">
+							    	<span style="cursor: pointer;" onclick="sortByReleaseDate( 0 );showHideSortOptions('date');"> Oldest First </span>
+							    </div>
+							    <div class="menu-item">
+							    	<span style="cursor: pointer;" onclick="sortByReleaseDate( 1 );showHideSortOptions('date');"> Newest First </span>
+							    </div>
 							  </div>
 							</div>
 						</td>
@@ -88,7 +101,7 @@
 
 	<!-- <div id="inputForm"> -->
 	<!-- </div> -->
-
+	<!-- <script src="js.js"></script> -->
 	</body>
 
 
@@ -99,6 +112,14 @@
 		    background-color: black;
 		    clear: left;
 		    text-align: center;
+		}
+
+		.menu-item {
+			background-color: #e6e6de 
+		}
+
+		.menu-item:hover {
+			background-color: #99ff99;
 		}
 
 		.left-column, .right-column{
@@ -198,4 +219,6 @@
 
 
 	</style>
+
+	<!-- <script src="js.js"></script> -->
 </html>
