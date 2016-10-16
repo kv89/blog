@@ -6,83 +6,84 @@
 	</head>
 	<body>
 	<header> <h1>Your Mobile Gallary !</h1> </header>
-	<div class="right-column">
-	  	<!-- <div>
-	  		<h3>Search your handset here !</h3>
-	  		<div>
-				<input id="searchInp" type="text" style="width: 30%;" onkeyup="onsearchEnter()"/>
-			</div>
-	  	</div> -->
-	  	<div class="grid" id="displayView" style="">
-		  	<h3>Search your handset here !</h3>
-		  	<div>
+	<div class="main-page">
+	  	<div class="grid" id="displayView">
+		  	<h2>Search your handset here !</h2>
+		  	<div style="width: 100%;">
 		  		<div class="input">
 					<input id="searchInp" type="text" style="" onkeyup="onsearchEnter()"/>
 				</div>
 		  	</div>
-	  		<h3>Total handsets : <span id="totalCnt"></span></h3>
-	  		<h3>Page : <span id="pageNo"></span></h3>
-	  		<div style="text-align: center;">
-	  		<table id="displayTable">
-	  			<thead style="font-size: 23px;">
-	  				<tr>
-		  				<td style="width: 10%; padding-left: 2px;">
-		  					Name
-		  					<div class="dropdown">
-							  <!-- <div onclick="showHideSortOptions('name');" style="cursor: pointer;"> <p>&darr;</p> </div> -->
-							  <p onclick="showHideSortOptions('name');" style="cursor: pointer;">&darr;</p>
-							  <div id="nameSortDrp" class="dropdown-content">
-							  	<div class="menu-item">
-							    	<span style="cursor: pointer;" onclick="sortName( 0 );showHideSortOptions('name');"> a - z </span>
-							    </div>
-							    <div class="menu-item">
-							    	<span style="cursor: pointer;" onclick="sortName( 1 );showHideSortOptions('name');"> z - a </span>
-							    </div>
-							  </div>
-							</div>
-		  				</td>
-		  				<td style="width: 10%; padding-left: 2px;">
-		  					Company
-		  					<div class="dropdown">
-							  <div onclick="showHideSortOptions('company')" style="cursor: pointer;"> <p>&darr;</p> </div>
-							  <div id="companySortDrp" class="dropdown-content">
-							  	<div class="menu-item">
-							    	<span style="cursor: pointer;" onclick="sortByCompanyName( 0 );showHideSortOptions('company');"> a - z </span>
-							    </div>
-							    <div class="menu-item">
-							    	<span style="cursor: pointer;" onclick="sortByCompanyName( 1 );showHideSortOptions('company');"> z - a </span>
-							    </div>
-							  </div>
-							</div>
-		  				</td>
-		  				<td style="width: 10%; padding-left: 2px;">
-		  					Release Date
-		  					<div class="dropdown">
-							  <div onclick="showHideSortOptions('date');" style="cursor: pointer;"> <p>&darr;</p> </div>
-							  <div id="dateSortDrp" class="dropdown-content">
-							  	<div class="menu-item">
-							    	<span style="cursor: pointer;" onclick="sortByReleaseDate( 0 );showHideSortOptions('date');"> Oldest First </span>
-							    </div>
-							    <div class="menu-item">
-							    	<span style="cursor: pointer;" onclick="sortByReleaseDate( 1 );showHideSortOptions('date');"> Newest First </span>
-							    </div>
-							  </div>
-							</div>
-						</td>
-		  				<td style="width: 30%; padding-left: 2px;">Description</td>
-	  				</tr>
-	  			</thead>
-	  			<tbody style="font-size: 20px; ">
-	  				<tr class="row"></tr>		
-	  			</tbody>
-	  			
-	  		</table>
+		  	<div style="width: 100%;">
+			  	<div style="float: left;">
+			  		<h4>Total handsets : <span id="totalCnt"></span></h4>
+			  		<h4>Page : <span id="pageNo"></span></h4>
+				</div>
+		  		<button type="button" style="cursor: pointer; width: 15%;float: right;" onclick="addPhone();">New Handset</button>
+			</div>
+	  		<div style="text-align: center; width: 100%;clear: both;">
+		  		<div id="paging" style="text-align: center;">
+		  			<button onclick="prevPage();"> << Prev </button>
+		  			<button onclick="nextPage();"> Next >> </button>
+		  		</div>
+		  		<table id="displayTable">
+		  			<thead style="font-size: 23px;">
+		  				<tr>
+			  				<td style="width: 10%; padding-left: 2px;">
+			  					Name
+			  					<div class="dropdown">
+								  <p onclick="showHideSortOptions('name');" style="cursor: pointer;">&darr;</p>
+								  <div id="nameSortDrp" class="dropdown-content">
+								  	<div class="menu-item">
+								    	<span style="cursor: pointer;" onclick="sortName( 0 );showHideSortOptions('name');"> a - z </span>
+								    </div>
+								    <div class="menu-item">
+								    	<span style="cursor: pointer;" onclick="sortName( 1 );showHideSortOptions('name');"> z - a </span>
+								    </div>
+								  </div>
+								</div>
+			  				</td>
+			  				<td style="width: 10%; padding-left: 2px;">
+			  					Company
+			  					<div class="dropdown">
+								  <div onclick="showHideSortOptions('company')" style="cursor: pointer;"> <p>&darr;</p> </div>
+								  <div id="companySortDrp" class="dropdown-content">
+								  	<div class="menu-item">
+								    	<span style="cursor: pointer;" onclick="sortByCompanyName( 0 );showHideSortOptions('company');"> a - z </span>
+								    </div>
+								    <div class="menu-item">
+								    	<span style="cursor: pointer;" onclick="sortByCompanyName( 1 );showHideSortOptions('company');"> z - a </span>
+								    </div>
+								  </div>
+								</div>
+			  				</td>
+			  				<td style="width: 10%; padding-left: 2px;">
+			  					Release Date
+			  					<div class="dropdown">
+								  <div onclick="showHideSortOptions('date');" style="cursor: pointer;"> <p>&darr;</p> </div>
+								  <div id="dateSortDrp" class="dropdown-content">
+								  	<div class="menu-item">
+								    	<span style="cursor: pointer;" onclick="sortByReleaseDate( 0 );showHideSortOptions('date');"> Oldest First </span>
+								    </div>
+								    <div class="menu-item">
+								    	<span style="cursor: pointer;" onclick="sortByReleaseDate( 1 );showHideSortOptions('date');"> Newest First </span>
+								    </div>
+								  </div>
+								</div>
+							</td>
+			  				<td style="width: 30%; padding-left: 2px;">Description</td>
+		  				</tr>
+		  			</thead>
+		  			<tbody style="font-size: 20px; ">
+		  				<tr class="row"></tr>		
+		  			</tbody>
+		  			
+		  		</table>
+		  		<div id="paging" style="text-align: center;">
+		  			<button onclick="prevPage();"> << Prev </button>
+		  			<button onclick="nextPage();"> Next >> </button>
+		  		</div>
 	  		</div>
-	  		<div id="paging" style="text-align: center;">
-	  			<button onclick="prevPage();"> < </button>
-	  			<button onclick="nextPage();"> > </button>
-	  		</div>
-	  		<button type="button" style="cursor: pointer; width: 15%;" onclick="addPhone();">New Handset</button>
 	  	</div>
         <div id="inputView" style="display: none;">
         	<div>
@@ -102,14 +103,10 @@
 			  			<label>Release Date</label>
 			  			<input type="date" name="mReleaseDt" placeholder="dd-mm-yyyy">
 			  		</div>
-		    	    <!-- <span style="color: red">*</span> Handset Name: <input type="text" name="mName" placeholder="first name"><br/>
-		    	    <span style="color: red">*</span> Company:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp <input type="text" name="mCompany" placeholder="last name"><br/>
-		    	    <span style="color: red">*</span> Release Date: <input type="date" name="mReleaseDt" placeholder="dd-mm-yyyy"><br/><br/> -->
 	    	    </div>
 	    	    <div style="width: 45%;float: left;">
 	    	    	<div class="input">
 			  			<label>Description <span style="color: red">*</span></label>
-			  			<!-- <input type="date" name="mReleaseDt" placeholder="dd-mm-yyyy"> -->
 			  			<textarea name="mDesc" rows="4" cols="200"></textarea>
 			  		</div>
 	    	    </div>
@@ -121,13 +118,7 @@
             </div>
         </div>
 	</div>
-
-	<!-- <div id="inputForm"> -->
-	<!-- </div> -->
-	<!-- <script src="js.js"></script> -->
 	</body>
-
-
 	<style type="text/css">
 		header, footer {
 			padding: 1em;
@@ -160,8 +151,11 @@
 
 		button {
 			width: 5%;
-			height: 25px;
-			margin: 2%;
+			height: 30px;
+			margin-left: 2%;
+			margin-right: 2%;
+			font-weight: bold;
+			background-color: aliceblue;
 		}
 		.menu-item {
 			background-color: #e6e6de 
@@ -171,20 +165,17 @@
 			background-color: #99ff99;
 		}
 
-		.left-column, .right-column{
+		.main-page {
 		  float:left;
-		  /*display: inl;*/
 		}
-
+/*
 		.left-column{
 		  width:10%; 
 		  border-right:solid 1px black;
-		}
+		}*/
 
 		.right-column{
-		  width: 100%; 
 		  padding: 1em;
-
 		  border:solid 1px black;
 		}
 
@@ -205,20 +196,7 @@
 		    border-color: inherit;
 		    font-weight: bold;
 		    text-align: justify;
-		    /*font-style: italic;*/
 		}
-
-		/*table thead tr {
-			width: 100%;
-		}*/
-
-		/*table thead,tbody tr {
-			padding: 2%;
-		}
-
-		table thead,tbody tr td, th {
-			width: 32%;
-		}*/
 
 		table tbody {
 		    display: table-row-group;
@@ -238,53 +216,43 @@
 		}
 
 		/*---------------*/
-.dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-}
+		.dropbtn {
+		    background-color: #4CAF50;
+		    color: white;
+		    padding: 16px;
+		    font-size: 16px;
+		    border: none;
+		    cursor: pointer;
+		}
 
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-    background-color: #3e8e41;
-}
+		.dropbtn:hover, .dropbtn:focus {
+		    background-color: #3e8e41;
+		}
 
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+		.dropdown {
+		    position: relative;
+		    display: inline-block;
+		}
 
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
+		.dropdown-content {
+		    display: none;
+		    position: absolute;
+		    background-color: #f9f9f9;
+		    min-width: 160px;
+		    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		}
 
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
+		.dropdown-content a {
+		    color: black;
+		    padding: 12px 16px;
+		    text-decoration: none;
+		    display: block;
+		}
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #f1f1f1}
+		.dropdown-content a:hover {background-color: #f1f1f1}
 
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+		.show {display:block;}
 
 		/*---------------*/
-
-
 	</style>
-
-	<!-- <script src="js.js"></script> -->
 </html>
