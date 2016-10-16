@@ -1,11 +1,9 @@
 'use strict';
 
-// console.log("-- : ", window.localStorage, typeof(Storage));
 var handsets = [];
-// var loadCnt = 1;
 var paging = {
     pageNo: 1,
-    pageSize: 5,
+    pageSize: 2,
 
     totalPages: -1,
     totalRecords: -1,
@@ -17,7 +15,7 @@ function nextPage() {
     if( !isNaN(paging.pageNo) ){
         if( paging.pageNo < paging.totalPages ) {
             paging.pageNo++;
-            insertRowsToTable( paging.currentData );// X
+            insertRowsToTable( paging.currentData );
         }
     }
 }
@@ -26,7 +24,7 @@ function prevPage() {
     if( !isNaN(paging.pageNo) ){
         if( paging.pageNo > 1 ) {
             paging.pageNo--;
-            insertRowsToTable( paging.currentData );// X
+            insertRowsToTable( paging.currentData );
         }
     }
 }
@@ -37,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function addPhone(){
-	// console.log('new phone.');
     var form = document.getElementById("inputForm");
     if( form ) {
         form.elements.namedItem("mName").value = '';
@@ -61,8 +58,6 @@ function navigateToSearch(){
 function saveForm(){
 	var form = document.getElementById("inputForm");
 	if( form ) {
-		console.log('got form : ', form);
-        // console.log( form.elements.namedItem("firstname").value );
         var newPhone = {
             name: form.elements.namedItem("mName").value.trim(),
             company: form.elements.namedItem("mCompany").value.trim(),
@@ -70,11 +65,9 @@ function saveForm(){
             description: form.elements.namedItem("mDesc").value.trim(),
         };
         var isValid = validateNewData( newPhone );
-        // console.log('Is valid input :', isValid);
         if( isValid ) {
             newPhone.id = new Date().getTime();
             console.log('save to db..');
-            // handsets = JSON.parse( window.localStorage.getItem("allHandsets") ) || [];
             handsets.push( newPhone );
             
             window.localStorage.setItem("allHandsets", JSON.stringify( handsets ));
@@ -86,7 +79,6 @@ function saveForm(){
 }
 
 function validateNewData( newData ) {
-    console.log('new - ', newData);
     var errMsgElem = document.getElementById("errMsg");
     if( !(newData.name && newData.company && newData.description) ) {
         if( errMsgElem ){
@@ -115,7 +107,6 @@ var onsearchEnter = function(){// TODO: not optimized yet
     } else {
         return ;        
     }
-    // console.log('search for : ', searchFor);
 	
     var filterData = searchForString( searchFor );
     paging.currentData = filterData;
@@ -126,16 +117,13 @@ var onsearchEnter = function(){// TODO: not optimized yet
     
 }
 
-function searchForString(searchFor) {// TODO: bug on 2nd time search
+function searchForString(searchFor) {// TODO: bug on 2nd time search -- solved
     searchFor = searchFor.toLowerCase();
-// debugger;
     var results = {};
     var data = handsets;
-    // console.log('data : ', data);
     for (var i = 0; i < data.length; i++) {
         for (var key in data[i]) {
             if (key != 'id' && data[i][key].toLowerCase().indexOf(searchFor) != -1) {
-                // results.push(data[i]);
                 results[data[i].id] = data[i];
             }
         }
@@ -150,48 +138,29 @@ function searchForString(searchFor) {// TODO: bug on 2nd time search
 function insertRowsToTable( totalRecords ) {
     document.getElementById("pageNo").innerHTML = paging.pageNo;
     document.getElementById("totalCnt").innerHTML = totalRecords.length;
-    var dataRows = totalRecords; //handsets;
+    var dataRows = totalRecords;
     var fromIndex = (paging.pageNo - 1) * paging.pageSize;
     var toIndex = fromIndex + paging.pageSize;
     paging.currPageData = dataRows.slice(fromIndex, toIndex);// not including toIndex
-    console.log('total rows in table : ', paging.currPageData.length);
 
     createTable();
-
-    // paging.currPageData.forEach(function (item, index) {// array of objects
-    //     // console.log(item, index);
-    //     var row = table.insertRow(-1);// last position
-    //     var cellPos = 0;
-    //     for (var prop in item) {
-    //         // console.log(prop);
-    //         if (typeof (item) == 'object' && item.hasOwnProperty(prop) && prop != 'id') {
-    //             row.insertCell(cellPos).innerHTML = item[prop];
-    //             cellPos++;
-    //         }
-    //     }
-    // });
 }
 
 function createTable(){
-    // debugger;
     var table = document.getElementById("displayTable");
-    // var data = JSON.parse( indow.localStorage.getItem("allHandsets") );
     if (!table) {
         return;
     }
-    // console.log('table.rows : ', table.rows, table.rows.length);
     while (table.rows.length > 2) {
         table.deleteRow( -1 );
     }
 
-    paging.currPageData.forEach(function (item, index) {// array of objects
-        // debugger;
-        var row = table.insertRow(-1);// first position
+    paging.currPageData.forEach(function (item, index) {
+        var row = table.insertRow(-1);
         row.style["line-height"] = "40px";
         row.style["margin"] = "4px";
         var cellPos = 0;
         for (var prop in item) {
-            // console.log(prop);
             if (typeof (item) == 'object' && item.hasOwnProperty(prop) && prop != 'id') {
                 var cell = row.insertCell(cellPos);
                 cell.innerHTML = item[prop];
@@ -204,7 +173,6 @@ function createTable(){
 
    // --------------
 function showHideSortOptions( column ) {
-    // debugger;
     if( column === 'name' ){
         document.getElementById("nameSortDrp").classList.toggle("show");
     }
@@ -231,7 +199,6 @@ function sortName( sortOrder ) {
 
     if( paging.currentData.length > 0 ) {
         paging.currentData.sort( sortOrder == 0 ? asc : desc);
-        // handsets.forEach(console.log);
         insertRowsToTable( paging.currentData );
     }
 
@@ -239,7 +206,6 @@ function sortName( sortOrder ) {
 
 
 function sortByCompanyName( sortOrder ) {
-    // debugger;
     function asc( a, b ) {
         return (a.company < b.company) ? -1 : 1;
     }
@@ -256,7 +222,6 @@ function sortByCompanyName( sortOrder ) {
 }
 
 function sortByReleaseDate( sortOrder ) {
-    // debugger;
     function asc( a, b ) {
         debugger;
         var dt1 = new Date(a.releaseDate);
@@ -276,8 +241,6 @@ function sortByReleaseDate( sortOrder ) {
     }
 
 }
-
-
 
 // init sample data here
 function init() {
