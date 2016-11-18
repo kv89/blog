@@ -17,6 +17,18 @@ Resources 5. https://github.com/ericdouglas/ES6-Learning
 3. https://www.sitepoint.com/understanding-angulars-apply-digest/
 4. https://www.sitepoint.com/premium/books/angularjs-novice-to-ninja/preview/modules-controllers-data-binding-3fb89f7
 
+
+--- *** --- WHY WE NEED . for ng-model="form.sumthing" --- *** ---
+
+https://nathanleclaire.com/blog/2014/04/19/5-angularjs-antipatterns-and-pitfalls/
+https://docs.angularjs.org/guide/directive
+https://developer.mozilla.org/en/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+http://stackoverflow.com/questions/30818588/angularjs-model-not-updating-in-controller-scope
+
+--- *** --- WHY WE NEED . for ng-model="form.sumthing" --- *** ---
+
+
+
 // Node
 1. https://youtu.be/8aGhZQkoFbQ 
 2. http://www.i-programmer.info/news/167-javascript/10053-closure-moves-to-javascript.html
